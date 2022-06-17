@@ -23,7 +23,10 @@ class M_pegawai extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->get_where($this->table, ["id" => $id])->row();
+        $this->db->select('pegawai.id, pegawai.nama, pegawai.id_poli, poli.nama as poli');
+        $this->db->join('poli', 'pegawai.id_poli = poli.id');
+        $query = $this->db->get_where($this->table, ["pegawai.id" => $id]);
+        return $query->row();
     }
 
     public function getAll()

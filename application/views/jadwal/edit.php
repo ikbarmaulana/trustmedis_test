@@ -19,11 +19,12 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Pegawai</label>
                         <div class="col-sm-10">
+                        <input type="hidden" class="form-control" id="id" name="id" value=" <?= $data_jadwal->id; ?>">
                             <select class="form-control" id="id_pegawai" name="id_pegawai">
-                                <option selected="0">select..</option>
-                                    <?php foreach($data_pegawai as $row)  : ?>
-                                <option value="<?php echo $row->id;?>"> <?php echo $row->nama; ?></option>
-                                    <?php endforeach; ?>
+                                    <option selected="0" value="<?php echo $data_jadwal->id_pegawai;?>"><?php echo $data_jadwal->nama; ?></option>
+                                <?php foreach($data_pegawai as $row)  : ?>
+                                    <option value="<?php echo $row->id;?>"> <?php echo $row->nama; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -32,7 +33,7 @@
                         <label class="col-sm-2 col-form-label">Hari</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="id_hari" name="id_hari">
-                                <option selected="0">select..</option>
+                            <option selected="0" value="<?php echo $data_jadwal->id_hari;?>"><?php echo $data_jadwal->hari; ?></option>
                                     <?php foreach($data_hari as $row)  : ?>
                                 <option value="<?php echo $row->id;?>"> <?php echo $row->nama; ?></option>
                                     <?php endforeach; ?>
@@ -43,7 +44,7 @@
                     <div class="form-group row">
                         <label for="nama" class="col-sm-2 col-form-label">Jam Mulai</label>
                         <div class="col-sm-10">
-                            <input type="time" class="form-control" id="jam_mulai" name="jam_mulai" value=" <?= set_value('jam_mulai'); ?>">
+                            <input type="time" class="form-control" id="jam_mulai" name="jam_mulai" value="<?php echo $data_jadwal->jam_mulai;?>"> 
                             <small class="text-danger">
                                 <?php echo form_error('jam_mulai') ?>
                             </small>
@@ -53,7 +54,7 @@
                     <div class="form-group row">
                         <label for="nama" class="col-sm-2 col-form-label">Jam Berakhir</label>
                         <div class="col-sm-10">
-                            <input type="time" class="form-control" id="jam_berakhir" name="jam_berakhir" value=" <?= set_value('jam_berakhir'); ?>">
+                            <input type="time" class="form-control" id="jam_berakhir" name="jam_berakhir" value="<?php echo $data_jadwal->jam_berakhir;?>">
                             <small class="text-danger">
                                 <?php echo form_error('jam_berakhir') ?>
                             </small>

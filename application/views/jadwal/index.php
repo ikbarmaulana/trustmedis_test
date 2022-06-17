@@ -9,6 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <a class="btn btn-primary mb-2" href="<?= base_url('jadwal/add'); ?>">Tambah Data</a>
+            <a href="<?= base_url('GeneratePdf'); ?>" class="btn btn-warning mb-2"><i class="fa fa-file"></i> Generate PDF</a>
             <div mb-2>
                 <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
                 <?php if ($this->session->flashdata('message')) :
@@ -35,7 +36,7 @@
                                         <td>
                                             <a href="<?= site_url('jadwal/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
                                             <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
-                                            <a href="<?= site_url('jadwal/export/' . $row->id) ?>" class="btn btn-warning btn-sm"><i class="fa fa-file"></i> </a>
+                                           
                                         </td>
                                         <td><?= $row->poli ?></td>
                                         <td><?= $row->nama ?></td>

@@ -33,7 +33,13 @@ class M_jadwal extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->get_where($this->table, ["id" => $id])->row();
+        $this->db->select('jadwal_dokter.id, pegawai.nama, hari.nama as hari, jam_mulai, jam_berakhir, poli.nama as poli, hari.id as id_hari, pegawai.id as id_pegawai');
+        // $this->db->from($this->table);
+        $this->db->join('pegawai', 'jadwal_dokter.id_pegawai = pegawai.id');
+        $this->db->join('hari', 'jadwal_dokter.id_hari = hari.id');
+        $this->db->join('poli', 'pegawai.id_poli = poli.id');
+        $query = $this->db->get_where($this->table, ["jadwal_dokter.id" => $id]);
+        return $query->row();
     }
 
     public function getAll()
@@ -71,6 +77,18 @@ class M_jadwal extends CI_Model
             "updated_at" => date('Y-m-d H:i:s')
         );
         return $this->db->update($this->table, $data, array('id' => $this->input->post('id')));
+    }
+
+    public function getJadwalFull()
+    {
+        $this->db->select('jadwal_dokter.id, pegawai.nama as pegawai, id_hari, hari.nama as hari, poli.nama as poli, jam_mulai, jam_berakhir');
+        $this->db->from($this->table);
+        $this->db->join('pegawai', 'jadwal_dokter.id_pegawai = pegawai.id');
+        $this->db->join('hari', 'jadwal_dokter.id_hari = hari.id');
+        $this->db->join('poli', 'pegawai.id_poli = poli.id');
+
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function delete($id)

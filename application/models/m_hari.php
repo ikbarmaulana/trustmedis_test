@@ -8,7 +8,7 @@ class M_hari extends CI_Model
     public function getAll()
     {
         $this->db->from($this->table);
-        $this->db->order_by("id", "desc");
+        $this->db->order_by("id", "asc");
         $query = $this->db->get();
         return $query->result();
     }

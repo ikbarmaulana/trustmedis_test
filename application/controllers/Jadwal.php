@@ -63,7 +63,7 @@ class Jadwal extends CI_Controller
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button></div>');
-            redirect("pegawai");
+            redirect("jadwal");
         }
         $data["title"] = "Edit Data Pegawai";
         $data["data_jadwal"] = $jadwal->getById($id);

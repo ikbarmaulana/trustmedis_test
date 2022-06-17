@@ -31,7 +31,7 @@
                         <label class="col-sm-2 col-form-label">Poli</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="id_poli" name="id_poli" >
-                                <option selected="0">select..</option>
+                                <option selected="0" value="<?php echo $data_pegawai->id_poli;?>"><?php echo $data_pegawai->poli; ?></option>
                                     <?php foreach($data_poli as $row)  : ?>
                                 <option value="<?php echo $row->id;?>"> <?php echo $row->nama; ?></option>
                                     <?php endforeach; ?>
